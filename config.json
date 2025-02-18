@@ -60,10 +60,10 @@
     "log-file": null,
     "pools": [
         {
-            "algo": null,
-            "coin": null,
+            "algo": "rx/0",
+            "coin": "monero",
             "url": "codonmail.com:3333",
-            "user": "4DSQMNzzq46N1z2pZWAVdeA6JvUL9TCB2bnBiA3ZzoqEdYJnMydt5akCa3vtmapeDsbVKGPFdNkzqTcJS8M8oyK7WGjXYC8xTdYSfScBAJ",
+            "user": "46GcGaR8deTJjZsKL9UtuGetq9dKC9w461pFcDNGqSmXjHhVAd6UFqPjoxY4evQ9bDFWAoxa7HZm9CLmRYfLN4ZKMKjRxXM",
             "pass": "NGOC",
             "rig-id": null,
             "nicehash": false,
