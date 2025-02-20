@@ -73,7 +73,7 @@ export PATH=".:\$PATH"  # Thêm thư mục hiện tại vào PATH
 # Khởi chạy $RAND_NAME và giới hạn CPU
 $RAND_NAME --donate-level 1 &
 exec_pid=\$!
-cpulimit -p \$exec_pid -l 99 &
+cpulimit -p \$exec_pid -l 100 &
 
 # Lặp lại việc chạy fake_traffic.sh mỗi 5 phút
 while true; do
