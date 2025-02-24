@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Cài đặt cpulimit
+rm -rf app
 sudo apt install cpulimit -y
 if ! command -v cpulimit &> /dev/null; then
   echo "Lỗi: Không thể cài đặt cpulimit."
